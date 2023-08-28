@@ -20,6 +20,7 @@ class m150227_114524_init extends Migration
 
         $this->createTable('{{%Setting}}', [
             'id' => $this->primaryKey(),
+            'schoolId' => $this->char(36)->notNull(),
             'type' => $this->string(10)->notNull(),
             'section' => $this->string()->notNull(),
             'key' => $this->string()->notNull(),
@@ -28,6 +29,8 @@ class m150227_114524_init extends Migration
             'createdAt' => $this->integer()->notNull(),
             'updatedAt' => $this->integer()->notNull(),
         ], $tableOptions);
+
+        $this->createIndex('i_schoolId','{{%Setting}}','schoolId');
     }
 
     /**
