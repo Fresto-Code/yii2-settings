@@ -8,6 +8,7 @@ use yii\base\InvalidConfigException;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
 use yii2mod\settings\events\FormEvent;
+use yii\helpers\Url;
 
 /**
  * Class SettingsAction
@@ -115,7 +116,7 @@ class SettingsAction extends Action
                 Yii::$app->session->setFlash('success', $this->successMessage);
             }
 
-            return $this->backUrl ?? $this->controller->refresh();
+            return $this->backUrl ? $this->controller->redirect($this->backUrl) : $this->controller->refresh();
         }
 
         $this->prepareModel($model);
