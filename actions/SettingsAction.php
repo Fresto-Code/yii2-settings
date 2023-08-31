@@ -79,6 +79,8 @@ class SettingsAction extends Action
      */
     public $viewParams = [];
 
+    public $backUrl = null;
+
     /**
      * @inheritdoc
      */
@@ -113,7 +115,7 @@ class SettingsAction extends Action
                 Yii::$app->session->setFlash('success', $this->successMessage);
             }
 
-            return $this->controller->refresh();
+            return $this->backUrl ?? $this->controller->refresh();
         }
 
         $this->prepareModel($model);
