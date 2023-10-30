@@ -1,7 +1,5 @@
 <?php
 
-namespace yii2mod\settings\migrations;
-
 use Yii;
 use yii\db\Migration;
 use yii2mod\settings\models\SettingModel;
