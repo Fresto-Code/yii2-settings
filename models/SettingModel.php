@@ -29,7 +29,7 @@ class SettingModel extends ActiveRecord
      */
     public static function tableName(): string
     {
-        return '{{%setting}}';
+        return 'setting-'.\Yii::$app->id;
     }
 
     public function beforeSave($insert)
