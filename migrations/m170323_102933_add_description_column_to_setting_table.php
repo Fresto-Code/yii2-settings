@@ -1,6 +1,7 @@
 <?php
 
 use yii\db\Migration;
+use yii2mod\settings\models\SettingModel;
 
 /**
  * Handles adding description to table `setting`.
@@ -12,7 +13,7 @@ class m170323_102933_add_description_column_to_setting_table extends Migration
      */
     public function up()
     {
-        $this->addColumn('{{%setting}}', 'description', $this->string()->after('status'));
+        $this->addColumn(SettingModel::tableName(), 'description', $this->string()->after('status'));
     }
 
     /**
@@ -20,6 +21,6 @@ class m170323_102933_add_description_column_to_setting_table extends Migration
      */
     public function down()
     {
-        $this->dropColumn('{{%setting}}', 'description');
+        $this->dropColumn(SettingModel::tableName(), 'description');
     }
 }

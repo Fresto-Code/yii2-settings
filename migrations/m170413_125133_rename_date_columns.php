@@ -1,19 +1,20 @@
 <?php
 
 use yii\db\Migration;
+use yii2mod\settings\models\SettingModel;
 
 class m170413_125133_rename_date_columns extends Migration
 {
     public function up()
     {
-        $this->renameColumn('{{%setting}}', 'createdAt', 'created_at');
-        $this->renameColumn('{{%setting}}', 'updatedAt', 'updated_at');
+        $this->renameColumn(SettingModel::tableName(), 'createdAt', 'created_at');
+        $this->renameColumn(SettingModel::tableName(), 'updatedAt', 'updated_at');
     }
 
     public function down()
     {
-        $this->renameColumn('{{%setting}}', 'created_at', 'createdAt');
-        $this->renameColumn('{{%setting}}', 'updated_at', 'updatedAt');
+        $this->renameColumn(SettingModel::tableName(), 'created_at', 'createdAt');
+        $this->renameColumn(SettingModel::tableName(), 'updated_at', 'updatedAt');
     }
 
     /*

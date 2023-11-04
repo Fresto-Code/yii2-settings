@@ -1,6 +1,7 @@
 <?php
 
 use yii\db\Migration;
+use yii2mod\settings\models\SettingModel;
 
 /**
  * Class m150227_114524_init
@@ -18,7 +19,7 @@ class m150227_114524_init extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('{{%Setting}}', [
+        $this->createTable(SettingModel::tableName(), [
             'id' => $this->primaryKey(),
             'schoolId' => $this->char(36)->notNull(),
             'type' => $this->string(10)->notNull(),
@@ -30,7 +31,7 @@ class m150227_114524_init extends Migration
             'updatedAt' => $this->integer()->notNull(),
         ], $tableOptions);
 
-        $this->createIndex('i_schoolId','{{%Setting}}','schoolId');
+        $this->createIndex('i_schoolId',SettingModel::tableName(),'schoolId');
     }
 
     /**
@@ -38,6 +39,6 @@ class m150227_114524_init extends Migration
      */
     public function down()
     {
-        $this->dropTable('{{%Setting}}');
+        $this->dropTable(SettingModel::tableName());
     }
 }
