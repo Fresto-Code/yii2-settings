@@ -120,6 +120,9 @@ class SettingModel extends ActiveRecord
     public function getSettings(): array
     {
         $result = [];
+        if(!\Yii::$app->has('school')){
+            return $result;
+        }
         $settings = static::find()->select(['type', 'section', 'key', 'value'])
             ->active()
             ->andWhere(['schoolId' => \Yii::$app->school->id])
