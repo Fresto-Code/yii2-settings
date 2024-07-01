@@ -32,6 +32,11 @@ class SettingModel extends ActiveRecord
         return 'setting-'.\Yii::$app->id;
     }
 
+    public static function getDb()
+    {
+        return Yii::$app->get(Yii::$app->settings->db);
+    }
+
     public function beforeSave($insert)
     {
         if ($insert) {

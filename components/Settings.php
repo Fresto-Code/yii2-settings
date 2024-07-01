@@ -37,6 +37,8 @@ class Settings extends Component
      */
     public $cacheKey = 'yii2mod-setting';
 
+    public $db = 'db';
+
     /**
      * @var \yii2mod\settings\models\SettingModel setting model
      */
@@ -51,6 +53,7 @@ class Settings extends Component
      * @var mixed setting value
      */
     protected $setting;
+
 
     /**
      * Initialize the component

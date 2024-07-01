@@ -14,11 +14,10 @@ Persistent, application-wide settings for Yii2.
 
 ## Support us
 
-Does your business depend on our contributions? Reach out and support us on [Patreon](https://www.patreon.com/yii2mod). 
+Does your business depend on our contributions? Reach out and support us on [Patreon](https://www.patreon.com/yii2mod).
 All pledges will be dedicated to allocating workforce on maintenance and new awesome stuff.
 
-Installation
-------------
+## Installation
 
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
@@ -36,24 +35,25 @@ or add
 
 to the require section of your composer.json.
 
-Configuration
--------------
+## Configuration
 
 **Database Migrations**
 
 Before usage this extension, we'll also need to prepare the database.
 
 ```sh
-php yii migrate --migrationPath=@vendor/yii2mod/yii2-settings/migrations
+php yii migrate --migrationPath=@vendor/afresto/settings/migrations
 ```
 
 **Module Setup**
 
 To access the module, you need to configure the modules array in your application configuration:
+
 ```php
 'modules' => [
     'settings' => [
         'class' => 'yii2mod\settings\Module',
+        'db' => 'db',
     ],
 ],
 ```
@@ -73,6 +73,7 @@ http://localhost/path/to/index.php/settings
 **Component Setup**
 
 To use the Setting Component, you need to configure the components array in your application configuration:
+
 ```php
 'components' => [
     'settings' => [
@@ -81,8 +82,8 @@ To use the Setting Component, you need to configure the components array in your
 ],
 ```
 
-Usage:
----------
+## Usage:
+
 ```php
 $settings = Yii::$app->settings;
 
@@ -113,13 +114,12 @@ $settings->getAllBySection('section');
 $settings->invalidateCache(); // automatically called on set(), remove();
 ```
 
-Manage custom settings
-----------------------
+## Manage custom settings
 
 You can use your own form model to manage custom settings for your web application via `SettingsAction`.
 To use the `SettingsAction` class you need to follow the following steps:
 
-1) Create your own model, for example:
+1. Create your own model, for example:
 
 ```php
 <?php
@@ -164,7 +164,7 @@ class ConfigurationForm extends Model
 }
 ```
 
-2) Create view file, named `settings.php` with the following content:
+2. Create view file, named `settings.php` with the following content:
 
 ```php
 <?php
@@ -189,7 +189,7 @@ $this->title = Yii::t('app', 'Manage Application Settings');
 
 ```
 
-3) Add settings action to your controller class as follows:
+3. Add settings action to your controller class as follows:
 
 ```php
 <?php
@@ -227,12 +227,9 @@ class SiteController extends Controller
 }
 ```
 
-*Now you can access to the settings page by the following URL: http://localhost/path/to/index.php?r=site/manage-settings/*
+_Now you can access to the settings page by the following URL: http://localhost/path/to/index.php?r=site/manage-settings/_
 
-
-
-Internationalization
-----------------------
+## Internationalization
 
 All text and messages introduced in this extension are translatable under category 'yii2mod.settings'.
 You may use translations provided within this extension, using following application configuration:
