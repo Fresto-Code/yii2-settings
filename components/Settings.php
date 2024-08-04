@@ -212,15 +212,17 @@ class Settings extends Component
      */
     protected function getSettingsConfig(): array
     {
-        if (!$this->cache instanceof Cache) {
-            $this->items = $this->model->getSettings();
-        } else {
-            $cacheItems = $this->cache->get($this->cacheKey);
-            if (!empty($cacheItems)) {
-                $this->items = $cacheItems;
-            } else {
+        if(is_null($this->items)) {
+            if (!$this->cache instanceof Cache) {
                 $this->items = $this->model->getSettings();
-                $this->cache->set($this->cacheKey, $this->items);
+            } else {
+                $cacheItems = $this->cache->get($this->cacheKey);
+                if (!empty($cacheItems)) {
+                    $this->items = $cacheItems;
+                } else {
+                    $this->items = $this->model->getSettings();
+                    $this->cache->set($this->cacheKey, $this->items);
+                }
             }
         }
 
